@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health and Hygiene</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d7e4d7;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* LOGIN AND REGISTRATION */
+
+#loginPage {
+    display: block;
+}
+
+#registerPage,
+#appContent {
+    display: none;
+}
+
+.auth-container {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #e6eee4;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+.auth-container h2 {
+    color: #1b5e36;
+    margin-bottom: 20px;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+.auth-container button {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.auth-container p {
+    margin-top: 15px;
+}
+
+.auth-container a {
+    color: #1b5e36;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* BUTTONS */
+
+.btn-primary {
+    display: inline-block;
+    background-color: #1b5e36;
+    color: white;
+    text-decoration: none;
+    padding: 12px 26px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #144728;
+}
+
+.btn-secondary {
+    background-color: #f4f7f4;
+    color: #222;
+    border: 1px solid #8fa38f;
+    padding: 11px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* NAVIGATION BAR */
+
+.navbar {
+    background-color: #1b5e36;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#logoutBtn {
+    background: white;
+    color: #1b5e36;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* COMMON SECTIONS */
+
+section {
+    padding: 50px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    color: #2e6b34;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.card {
+    background-color: #e6eee4;
+    padding: 30px 36px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* HOME SECTION */
+
+.home-section {
+    text-align: center;
+    padding-top: 60px;
+}
+
+.home-card {
+    background-color: #e6eee4;
+    padding: 45px 30px;
+    border-radius: 12px;
+}
+
+.home-card h1 {
+    color: #1b5e36;
+    font-size: 36px;
+    margin-bottom: 14px;
+}
+
+.home-card p {
+    font-size: 17px;
+    margin: 0 auto 24px;
+    max-width: 680px;
+}
+
+/* HEALTHY FOOD */
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.food-item {
+    background-color: #edf2eb;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #2e6b34;
+}
+
+.food-item h3 {
+    color: #1b5e36;
+    margin-bottom: 8px;
+}
+
+/* HEALTH TIPS */
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: center;
+}
+
+.step-block {
+    background-color: #edf2eb;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.step-block h3 {
+    color: #1b5e36;
+    margin-bottom: 4px;
+}
+
+/* CHECKLIST */
+
+.check-badge {
+    background-color: #4caf50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    background-color: #edf2eb;
+    padding: 12px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.task-item input {
+    width: 17px;
+    height: 17px;
+    margin-right: 12px;
+    accent-color: #1b5e36;
+}
+
+.action-row {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.feedback-msg {
+    margin-top: 14px;
+    font-weight: bold;
+}
+
+/* QUIZ */
+
+.quiz-question {
+    background-color: #edf2eb;
+    padding: 18px 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.quiz-question p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #1b5e36;
+}
+
+.quiz-option {
+    display: block;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+.quiz-option input {
+    margin-right: 10px;
+    accent-color: #1b5e36;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1b5e36;
+    color: white;
+    margin-top: 40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- USER LOGIN -->
+
+<div class="auth-container" id="loginPage">
+    <h2>User Login</h2>
+
+    <input type="email" id="loginEmail"
+           placeholder="Enter Email">
+
+    <input type="password" id="loginPassword"
+           placeholder="Enter Password">
+
+    <button class="btn-primary" onclick="loginUser()">
+        Login
+    </button>
+
+    <p>Don't have an account?
+        <a onclick="showRegister()">Register Here</a>
+    </p>
+
+    <p id="loginMessage"></p>
+</div>
+
+<!-- USER REGISTRATION -->
+
+<div class="auth-container" id="registerPage">
+    <h2>Create Account</h2>
+
+    <input type="text" id="regName"
+           placeholder="Enter Your Name">
+
+    <input type="email" id="regEmail"
+           placeholder="Enter Email">
+
+    <input type="password" id="regPassword"
+           placeholder="Create Password">
+
+    <button class="btn-primary" onclick="registerUser()">
+        Register
+    </button>
+
+    <p>Already have an account?
+        <a onclick="showLogin()">Login Here</a>
+    </p>
+
+    <p id="registerMessage"></p>
+</div>
+
+<!-- MAIN WEBSITE CONTENT -->
+
+<div id="appContent">
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#healthy-food">Healthy Food</a>
+        <a href="#health-tips">Health Tips</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#quiz">Quiz</a>
+
+        <button id="logoutBtn" onclick="logoutUser()">
+            Logout
+        </button>
+    </nav>
+
+    <!-- HOME SECTION -->
+
+    <section id="home" class="home-section">
+        <div class="home-card">
+
+            <h1>Welcome to Health & Hygiene</h1>
+
+            <p>
+                Good personal hygiene and nutritious food
+                are the foundation of a healthy, disease-free life.
+                Explore healthy eating habits, follow proper
+                hand-washing steps, track your daily hygiene,
+                and test your knowledge!
+            </p>
+
+            <a href="#checklist" class="btn-primary">
+                Start Daily Checklist
+            </a>
+
+        </div>
+    </section>
+
+    <!-- HEALTHY FOOD SECTION -->
+
+    <section id="healthy-food">
+
+        <h2 class="section-title">Healthy Food Guide</h2>
+
+        <p class="section-subtitle">
+            Eat a balanced diet every day to boost your
+            immunity and energy.
+        </p>
+
+        <div class="card">
+            <div class="food-grid">
+
+                <div class="food-item">
+                    <h3>Fruits & Vegetables</h3>
+                    <p>
+                        Rich in vitamins, minerals, and fiber
+                        to protect your body against infections.
+                    </p>
+                </div>
+
+                <div class="food-item">
+                    <h3>Whole Grains</h3>
+                    <p>
+                        Brown rice, oats, and whole wheat
+                        give long-lasting energy.
+                    </p>
+                </div>
+
+                <div class="food-item">
+                    <h3>Proteins</h3>
+                    <p>
+                        Pulses, eggs, nuts, fish, and lean meats
+                        help build and repair body tissues.
+                    </p>
+                </div>
+
+                <div class="food-item">
+                    <h3>Clean Water</h3>
+                    <p>
+                        Drink enough safe, clean water daily
+                        to stay hydrated.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HEALTH TIPS SECTION -->
+
+    <section id="health-tips">
+
+        <h2 class="section-title">
+            Health Tips: Proper Hand Washing
+        </h2>
+
+        <p class="section-subtitle">
+            Follow these 6 simple steps to keep your hands clean.
+        </p>
+
+        <div class="card">
+            <div class="steps-container">
+
+                <div class="step-block">
+                    <h3>Step 1: Wet Your Hands</h3>
+                    <p>Wet your hands with clean running water.</p>
+                </div>
+
+                <div class="step-block">
+                    <h3>Step 2: Apply Soap</h3>
+                    <p>Apply enough soap to cover your hands.</p>
+                </div>
+
+                <div class="step-block">
+                    <h3>Step 3: Rub Your Hands</h3>
+                    <p>Rub palms, fingers and the back of your hands.</p>
+                </div>
+
+                <div class="step-block">
+                    <h3>Step 4: Clean Your Nails</h3>
+                    <p>Clean between your fingers and under your nails.</p>
+                </div>
+
+                <div class="step-block">
+                    <h3>Step 5: Rinse Your Hands</h3>
+                    <p>Wash away the soap using clean water.</p>
+                </div>
+
+                <div class="step-block">
+                    <h3>Step 6: Dry Your Hands</h3>
+                    <p>Dry your hands with a clean towel.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DAILY HYGIENE CHECKLIST -->
+
+    <section id="checklist">
+
+        <h2 class="section-title">
+            <span class="check-badge">✔</span>
+            Daily Hygiene Checklist
+        </h2>
+
+        <p class="section-subtitle">
+            Tick the activities you have completed today.
+        </p>
+
+        <div class="card">
+
+            <div class="task-list">
+
+                <label class="task-item">
+                    <input type="checkbox" class="hygiene-checkbox">
+                    Brush teeth twice
+                </label>
+
+                <label class="task-item">
+                    <input type="checkbox" class="hygiene-checkbox">
+                    Take a bath
+                </label>
+
+                <label class="task-item">
+                    <input type="checkbox" class="hygiene-checkbox">
+                    Wash hands regularly
+                </label>
+
+                <label class="task-item">
+                    <input type="checkbox" class="hygiene-checkbox">
+                    Eat healthy food
+                </label>
+
+                <label class="task-item">
+                    <input type="checkbox" class="hygiene-checkbox">
+                    Drink clean water
+                </label>
+
+                <label class="task-item">
+                    <input type="checkbox" class="hygiene-checkbox">
+                    Exercise daily
+                </label>
+
+                <label class="task-item">
+                    <input type="checkbox" class="hygiene-checkbox">
+                    Keep surroundings clean
+                </label>
+
+                <label class="task-item">
+                    <input type="checkbox" class="hygiene-checkbox">
+                    Sleep on time
+                </label>
+
+            </div>
+
+            <div class="action-row">
+
+                <button type="button"
+                        id="submitChecklistBtn"
+                        class="btn-primary">
+                    Submit Checklist
+                </button>
+
+                <button type="button"
+                        id="resetChecklistBtn"
+                        class="btn-secondary">
+                    Reset
+                </button>
+
+            </div>
+
+            <p id="checklistStatus" class="feedback-msg"></p>
+
+        </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+
+    <section id="quiz">
+
+        <h2 class="section-title">Health & Hygiene Quiz</h2>
+
+        <p class="section-subtitle">
+            Select the correct answers and submit your quiz.
+        </p>
+
+        <div class="card">
+
+            <div class="quiz-question">
+                <p>1. How many times a day should you brush your teeth?</p>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong">
+                    Once a week
+                </label>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="correct">
+                    Twice a day
+                </label>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong">
+                    Only before lunch
+                </label>
+            </div>
+
+            <div class="quiz-question">
+                <p>2. What is the first step in proper hand washing?</p>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="correct">
+                    Wet your hands with clean running water
+                </label>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong">
+                    Dry your hands with a towel
+                </label>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong">
+                    Clean under your nails
+                </label>
+            </div>
+
+            <div class="quiz-question">
+                <p>3. Which helps keep your body hydrated?</p>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong">
+                    Sugary soda
+                </label>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong">
+                    Fried snacks
+                </label>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="correct">
+                    Clean drinking water
+                </label>
+            </div>
+
+            <div class="quiz-question">
+                <p>4. Why should we keep our surroundings clean?</p>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="correct">
+                    To prevent mosquitoes, germs, and diseases
+                </label>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong">
+                    To waste time
+                </label>
+
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong">
+                    It is not important
+                </label>
+            </div>
+
+            <div class="action-row">
+
+                <button type="button"
+                        id="submitQuizBtn"
+                        class="btn-primary">
+                    Submit Quiz
+                </button>
+
+                <button type="button"
+                        id="resetQuizBtn"
+                        class="btn-secondary">
+                    Reset Quiz
+                </button>
+
+            </div>
+
+            <p id="quizResult" class="feedback-msg"></p>
+
+        </div>
+    </section>
+
+    <footer>
+        Health and Hygiene Mini Project &copy; 2026
+    </footer>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* USER AUTHENTICATION */
+
+function showRegister() {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("registerPage").style.display = "block";
+}
+
+function showLogin() {
+    document.getElementById("registerPage").style.display = "none";
+    document.getElementById("loginPage").style.display = "block";
+}
+
+function registerUser() {
+
+    const name = document.getElementById("regName").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value;
+
+    if (!name || !email || !password) {
+        document.getElementById("registerMessage").textContent =
+            "Please fill all the fields!";
+        return;
+    }
+
+    if (password.length < 6) {
+        document.getElementById("registerMessage").textContent =
+            "Password must contain at least 6 characters!";
+        return;
+    }
+
+    if (localStorage.getItem("user_" + email)) {
+        document.getElementById("registerMessage").textContent =
+            "Account already exists!";
+        return;
+    }
+
+    const user = {
+        name: name,
+        email: email,
+        password: password
+    };
+
+    localStorage.setItem("user_" + email, JSON.stringify(user));
+
+    alert("Registration successful! Please login.");
+
+    document.getElementById("regName").value = "";
+    document.getElementById("regEmail").value = "";
+    document.getElementById("regPassword").value = "";
+
+    showLogin();
+}
+
+function loginUser() {
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    const savedUser = localStorage.getItem("user_" + email);
+
+    if (!savedUser) {
+        document.getElementById("loginMessage").textContent =
+            "Account not found. Please register first!";
+        return;
+    }
+
+    const user = JSON.parse(savedUser);
+
+    if (user.password === password) {
+
+        sessionStorage.setItem("loggedInUser", user.name);
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("registerPage").style.display = "none";
+        document.getElementById("appContent").style.display = "block";
+
+        alert("Welcome " + user.name + "!");
+
+    } else {
+
+        document.getElementById("loginMessage").textContent =
+            "Incorrect password!";
+    }
+}
+
+/* LOGOUT */
+
+function logoutUser() {
+
+    sessionStorage.removeItem("loggedInUser");
+
+    document.getElementById("appContent").style.display = "none";
+    document.getElementById("loginPage").style.display = "block";
+
+    document.getElementById("loginEmail").value = "";
+    document.getElementById("loginPassword").value = "";
+}
+
+/* CHECK LOGIN STATUS */
+
+window.addEventListener("DOMContentLoaded", function() {
+
+    const loggedInUser = sessionStorage.getItem("loggedInUser");
+
+    if (loggedInUser) {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("registerPage").style.display = "none";
+        document.getElementById("appContent").style.display = "block";
+    } else {
+        document.getElementById("loginPage").style.display = "block";
+        document.getElementById("registerPage").style.display = "none";
+        document.getElementById("appContent").style.display = "none";
+    }
+});
+
+/* DAILY HYGIENE CHECKLIST */
+
+const checkboxes = document.querySelectorAll(".hygiene-checkbox");
+
+const submitChecklistBtn =
+    document.getElementById("submitChecklistBtn");
+
+const resetChecklistBtn =
+    document.getElementById("resetChecklistBtn");
+
+const checklistStatus =
+    document.getElementById("checklistStatus");
+
+submitChecklistBtn.addEventListener("click", function() {
+
+    const total = checkboxes.length;
+
+    const completed =
+        document.querySelectorAll(".hygiene-checkbox:checked").length;
+
+    if (completed === total) {
+
+        checklistStatus.textContent =
+            "Excellent! You completed all " + completed +
+            " out of " + total + " daily hygiene tasks!";
+
+        checklistStatus.style.color = "#1b5e36";
+
+    } else {
+
+        checklistStatus.textContent =
+            "You completed " + completed + " out of " +
+            total + " tasks. Please complete the remaining tasks!";
+
+        checklistStatus.style.color = "#b33a3a";
+    }
+});
+
+resetChecklistBtn.addEventListener("click", function() {
+
+    checkboxes.forEach(function(cb) {
+        cb.checked = false;
+    });
+
+    checklistStatus.textContent = "";
+});
+
+/* QUIZ SUBMIT LOGIC */
+
+const submitQuizBtn = document.getElementById("submitQuizBtn");
+const resetQuizBtn = document.getElementById("resetQuizBtn");
+const quizResult = document.getElementById("quizResult");
+
+submitQuizBtn.addEventListener("click", function() {
+
+    const totalQuestions = 4;
+    let score = 0;
+    let answered = 0;
+
+    for (let i = 1; i <= totalQuestions; i++) {
+
+        const selected =
+            document.querySelector('input[name="q' + i + '"]:checked');
+
+        if (selected) {
+
+            answered++;
+
+            if (selected.value === "correct") {
+                score++;
+            }
+        }
+    }
+
+    if (answered < totalQuestions) {
+
+        quizResult.textContent =
+            "Please answer all questions before submitting! (" +
+            answered + "/" + totalQuestions + " answered)";
+
+        quizResult.style.color = "#b33a3a";
+
+    } else {
+
+        quizResult.textContent =
+            "Quiz Submitted! Your Score: " +
+            score + " / " + totalQuestions;
+
+        quizResult.style.color =
+            score >= 3 ? "#1b5e36" : "#b33a3a";
+    }
+});
+
+/* RESET QUIZ */
+
+resetQuizBtn.addEventListener("click", function() {
+
+    const radios = document.querySelectorAll(
+        '#quiz input[type="radio"]'
+    );
+
+    radios.forEach(function(radio) {
+        radio.checked = false;
+    });
+
+    quizResult.textContent = "";
+});
+
+</script>
+
+</body>
+</html>
